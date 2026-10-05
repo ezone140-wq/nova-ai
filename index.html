@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NOVA AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+        <div class="brand">
+            <div class="nova-dot"></div>
+
+            <div>
+                <h1>NOVA</h1>
+                <span>Personal AI Assistant</span>
+            </div>
+        </div>
+
+      
+    </header>
+
+
+    <main>
+
+        <section class="assistant">
+
+            <div class="orb-container">
+
+                <div class="orb" id="novaOrb">
+                    <div class="orb-inner"></div>
+                </div>
+
+            </div>
+
+
+            <h2 id="status">
+                Hi, I'm NOVA.
+            </h2>
+
+            <p id="subtitle">
+                Your personal AI assistant.
+            </p>
+
+
+            <button
+                id="talkButton"
+                class="talk-button"
+                onclick="startListening()"
+            >
+                <span class="mic">🎙</span>
+                Talk to NOVA
+            </button>
+
+
+            <p class="hint">
+                Tap the microphone and start speaking
+            </p>
+
+        </section>
+
+
+        <section class="conversation">
+
+            <div class="conversation-header">
+                Conversation
+            </div>
+
+            <div id="messages" class="messages">
+
+                <div class="message nova-message">
+                    <div class="avatar">N</div>
+
+                    <div class="bubble">
+                        Hello! I'm NOVA. How can I help you today?
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        NOVA AI • Your Personal Assistant
+    </footer>
+
+</div>
+
+
+<!-- =========================================
+     NOVA ACCOUNT MODAL
+========================================= -->
+
+<div
+    class="auth-overlay"
+    id="authOverlay"
+    aria-hidden="true"
+>
+
+    <div class="auth-modal">
+
+        <button
+            class="auth-close"
+            id="authCloseButton"
+            type="button"
+            aria-label="Close"
+        >
+            &times;
+        </button>
+
+
+        <!-- SIGN IN -->
+
+        <div
+            class="auth-view"
+            id="signInView"
+        >
+
+            <div class="auth-logo">
+                <div class="nova-dot"></div>
+                <span>NOVA</span>
+            </div>
+
+
+            <h2>Welcome back</h2>
+
+            <p class="auth-description">
+                Sign in to your personal NOVA.
+            </p>
+
+
+            <form id="signInForm">
+
+                <label for="signInEmail">
+                    Email
+                </label>
+
+                <input
+                    id="signInEmail"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                    required
+                >
+
+
+                <label for="signInPassword">
+                    Password
+                </label>
+
+                <input
+                    id="signInPassword"
+                    type="password"
+                    autocomplete="current-password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <button
+                    class="auth-primary-btn"
+                    id="signInSubmitButton"
+                    type="submit"
+                >
+                    Sign In
+                </button>
+
+            </form>
+
+
+            <button
+                class="auth-text-btn"
+                id="forgotPasswordButton"
+                type="button"
+            >
+                Forgot password?
+            </button>
+
+
+            <div class="auth-divider">
+                <span>or</span>
+            </div>
+
+
+            <button
+                class="auth-secondary-btn"
+                id="showCreateAccountButton"
+                type="button"
+            >
+                Create Account
+            </button>
+
+
+            <div
+                class="auth-message"
+                id="signInMessage"
+            ></div>
+
+        </div>
+
+
+        <!-- CREATE ACCOUNT -->
+
+        <div
+            class="auth-view"
+            id="createAccountView"
+            hidden
+        >
+
+            <div class="auth-logo">
+                <div class="nova-dot"></div>
+                <span>NOVA</span>
+            </div>
+
+
+            <h2>Create your NOVA</h2>
+
+            <p class="auth-description">
+                Create an account to keep your NOVA personal.
+            </p>
+
+
+            <form id="createAccountForm">
+
+                <label for="createName">
+                    Name
+                </label>
+
+                <input
+                    id="createName"
+                    type="text"
+                    autocomplete="name"
+                    placeholder="Your name"
+                    required
+                >
+
+
+                <label for="createEmail">
+                    Email
+                </label>
+
+                <input
+                    id="createEmail"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                    required
+                >
+
+
+                <label for="createPassword">
+                    Password
+                </label>
+
+                <input
+                    id="createPassword"
+                    type="password"
+                    autocomplete="new-password"
+                    placeholder="Minimum 6 characters"
+                    minlength="6"
+                    required
+                >
+
+
+                <button
+                    class="auth-primary-btn"
+                    id="createAccountSubmitButton"
+                    type="submit"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <button
+                class="auth-text-btn"
+                id="backToSignInButton"
+                type="button"
+            >
+                Already have an account? Sign In
+            </button>
+
+
+            <div
+                class="auth-message"
+                id="createAccountMessage"
+            ></div>
+
+        </div>
+
+
+        <!-- ACCOUNT VIEW -->
+
+        <div
+            class="auth-view"
+            id="accountView"
+            hidden
+        >
+
+            <div class="account-avatar">
+                N
+            </div>
+
+
+            <h2 id="accountName">
+                NOVA User
+            </h2>
+
+            <p
+                class="auth-description"
+                id="accountEmail"
+            ></p>
+
+
+            <div class="account-status">
+                <span class="account-status-dot"></span>
+                NOVA account connected
+            </div>
+
+
+            <button
+                class="auth-primary-btn"
+                id="closeAccountButton"
+                type="button"
+            >
+                Continue to NOVA
+            </button>
+
+
+            <button
+                class="auth-secondary-btn"
+                id="signOutButton"
+                type="button"
+            >
+                Sign Out
+            </button>
+
+
+            <div
+                class="auth-message"
+                id="accountMessage"
+            ></div>
+
+        </div>
+
+
+        <!-- RESET PASSWORD -->
+
+        <div
+            class="auth-view"
+            id="resetPasswordView"
+            hidden
+        >
+
+            <div class="auth-logo">
+                <div class="nova-dot"></div>
+                <span>NOVA</span>
+            </div>
+
+
+            <h2>Reset password</h2>
+
+            <p class="auth-description">
+                Enter your email and NOVA will send you a password reset link.
+            </p>
+
+
+            <form id="resetPasswordForm">
+
+                <label for="resetEmail">
+                    Email
+                </label>
+
+                <input
+                    id="resetEmail"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                    required
+                >
+
+
+                <button
+                    class="auth-primary-btn"
+                    id="resetPasswordSubmitButton"
+                    type="submit"
+                >
+                    Send Reset Link
+                </button>
+
+            </form>
+
+
+            <button
+                class="auth-text-btn"
+                id="resetBackButton"
+                type="button"
+            >
+                Back to Sign In
+            </button>
+
+
+            <div
+                class="auth-message"
+                id="resetPasswordMessage"
+            ></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="app.js"></script>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- NOVA Voice / Conversation -->
+<script src="app.js"></script>
+
+<!-- NOVA Account System -->
+
+</body>
+</html>
+</body>
+</html>

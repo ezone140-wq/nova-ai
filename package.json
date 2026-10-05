@@ -1,0 +1,17 @@
+{
+  "name": "nova-ai",
+  "version": "1.0.0",
+  "description": "NOVA Personal AI Assistant",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "openai": "^6.0.0"
+  }
+}
